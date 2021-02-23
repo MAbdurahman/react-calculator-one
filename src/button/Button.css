@@ -1,0 +1,17 @@
+.button {
+   width: 100px;
+   height: 100px;
+   text-align: center;
+   cursor: pointer;
+   font-size: 2rem;
+   border: 1px outset white;
+   outline: none;
+   color: #3a3a3a;
+   background-color: rgba(255, 255, 255, 0.75);
+   transition: width 2s;
+   transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
+
+.button:hover {
+   background-color: rgba(255, 255, 255, 0.9);
+}

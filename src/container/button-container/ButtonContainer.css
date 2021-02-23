@@ -1,0 +1,148 @@
+.button_container {
+   height: 400px;
+   margin-top: 1.3em;
+   display: grid;
+   grid-template-areas:
+      'add sub mul div'
+      'sev eig nin acc'
+      'fou fiv six bcc'
+      'one two thr equ'
+      'pmm zeo dec equ'
+   ;
+   
+}
+
+.button {
+   width: 100px;
+   height: 100px;
+   text-align: center;
+   cursor: pointer;
+   font-size: 2rem;
+   border: 1px outset white;
+   outline: none;
+   color: #3a3a3a;
+   background-color: rgba(255, 255, 255, 0.75);
+   transition: width 2s;
+   transition-timing-function: cubic-bezier(0.1, 0.7, 1.0, 0.1);
+}
+
+.button:hover {
+   background-color: rgba(255, 255, 255, 0.9);
+}
+
+.add {
+   grid-area: add;
+}
+
+.sub {
+   grid-area: sub;
+}
+
+.mul {
+   grid-area: mul;
+}
+
+.div {
+   grid-area: div;
+}
+
+.sev {
+   grid-area: sev;
+}
+
+.eig {
+   grid-area: eig;
+}
+
+.nin {
+   grid-area: nin;
+}
+
+.acc {
+   grid-area: acc;
+   background-color: #3ABCA5;
+   color: #b8bbb7;
+   color: rgb(255, 255, 255);
+}
+
+.acc:hover {
+   background-color: #30e6c4;
+}
+
+.fou {
+   grid-area: fou;
+}
+
+.fiv {
+   grid-area: fiv;
+}
+
+.six {
+   grid-area: six;
+}
+
+.bcc {
+   grid-area: bcc;
+   font-size: 3rem;
+   background-color: #038069;
+   color: #b8bbb7;
+   color: rgb(255, 255, 255);
+}
+
+.bcc:hover {
+   background-color: #17554a;
+}
+
+.one {
+   grid-area: one;
+}
+
+.two {
+   grid-area: two;
+}
+
+.thr {
+   grid-area: thr;
+}
+
+.equ {
+   grid-area: equ;
+   height: 200px;
+   font-weight: 800;
+   color: #b8bbb7;
+   background-color: #A6611A;
+   border-bottom-right-radius: 10px;
+
+}
+
+.equ:hover {
+   color: rgb(255, 255, 255);
+   background-color: #864f17;
+}
+
+.pmm {
+   grid-area: pmm;
+   border-bottom-left-radius: 10px;
+}
+
+.zeo {
+   grid-area: zeo;
+}
+
+.dec {
+   grid-area: dec;
+   font-size: 3rem;
+   font-weight: 800;
+}
+
+.operator {
+   font-weight: 800;
+   color: #b8bbb7;
+   background-color: #5E615C;
+
+}
+
+.operator:hover {
+   color: rgb(255, 255, 255);
+   background-color: #484946;
+}
