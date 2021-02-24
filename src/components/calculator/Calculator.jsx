@@ -19,6 +19,7 @@ export default function Calculator() {
 	const [current, setCurrent] = useState('0');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
+	const [text, setText] = useState('AC');
 
 	const appendValue = el => {
 		const value = el.target.getAttribute('data');
@@ -30,7 +31,8 @@ export default function Calculator() {
 		if (current.length === 1 && current.includes('0')) {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
-
+			setText('CL');
+			
 		} else {
 
 			setCurrent(current + value);
@@ -57,7 +59,7 @@ export default function Calculator() {
 					<NumberButton gridArea={'nin'} data={'9'} onClick={appendValue}>
 						9
 					</NumberButton>
-					<ClearButton gridArea={'acc'}>AC</ClearButton>
+					<ClearButton gridArea={'acc'}>{text}</ClearButton>
 					<NumberButton gridArea={'fou'} data={'4'} onClick={appendValue}>
 						4
 					</NumberButton>
