@@ -16,7 +16,7 @@ import {
 } from '../../styles/styled-components/Styled';
 
 export default function Calculator() {
-	const [current, setCurrent] = useState('');
+	const [current, setCurrent] = useState('0');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 
@@ -27,7 +27,14 @@ export default function Calculator() {
 			return;
 		}
 		console.log(value);
-		setCurrent(current + value);
+		if (current.length === 1 && current.includes('0')) {
+			value.replace(/^(0+)/g, '');
+			setCurrent(value);
+
+		} else {
+
+			setCurrent(current + value);
+		}
 	};
 	return (
 		<div className='calculator'>
