@@ -27,7 +27,7 @@
 }
 
 .button:hover {
-   background-color: rgba(255, 255, 255, 0.9);
+   background-color: rgba(236, 229, 229, 0.9);
 }
 
 .add {
@@ -117,7 +117,7 @@
 
 .equ:hover {
    color: rgb(255, 255, 255);
-   background-color: #864f17;
+   background-color: #bd6a17;
 }
 
 .pmm {

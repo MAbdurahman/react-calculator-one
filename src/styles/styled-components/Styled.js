@@ -67,12 +67,17 @@ export const OperatorButton = styled.button`
 	text-align: center;
 	cursor: pointer;
 	font-size: 2rem;
+	font-weight: 500;
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
 	background-color: rgba(194, 189, 189, 0.75);
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		color: #b8bbb7;
+		background-color: #5e615c;
+	}
 `;
 
 export const NumberButton = styled.button`
@@ -87,8 +92,12 @@ export const NumberButton = styled.button`
 	background-color: rgba(194, 189, 189, 0.75);
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		background-color: rgba(236, 229, 229, 0.9);
+	}
 `;
 export const ClearButton = styled.button`
+	grid-area: acc;
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -100,19 +109,29 @@ export const ClearButton = styled.button`
 	background-color: rgba(194, 189, 189, 0.75);
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		background-color: #3abca5;
+		color: rgb(255, 255, 255);
+	}
 `;
 export const BackButton = styled.button`
+	grid-area: bcc;
 	width: 100px;
 	height: 100px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 3rem;
+
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
 	background-color: rgba(194, 189, 189, 0.75);
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		background-color: #038069;
+		color: rgb(255, 255, 255);
+	}
 `;
 export const EqualButton = styled.button`
 	grid-area: equ;
@@ -131,7 +150,7 @@ export const EqualButton = styled.button`
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
 	&:hover {
 		color: rgb(255, 255, 255);
-		background-color: #864f17;
+		background-color: #bd6a17;
 	}
 `;
 
@@ -142,24 +161,35 @@ export const PMinusButton = styled.button`
 	text-align: center;
 	cursor: pointer;
 	font-size: 2rem;
+	font-weight: 500;
+	border: 1px outset white;
+	outline: none;
 	color: #3a3a3a;
 	background-color: rgba(194, 189, 189, 0.75);
-	outline: none;
-	border: 1px outset white;
 	border-bottom-left-radius: 10px;
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		color: #b8bbb7;
+		background-color: #5e615c;
+	}
 `;
 export const DecimalButton = styled.button`
+	grid-area: dec;
 	width: 100px;
 	height: 100px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 3rem;
+	font-weight: 800;
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
 	background-color: rgba(194, 189, 189, 0.75);
 	transition: width 2s;
 	transition-timing-function: cubic-bezier(0.1, 0.7, 1, 0.1);
+	&:hover {
+		color: #b8bbb7;
+		background-color: #5e615c;
+	}
 `;
