@@ -137,7 +137,7 @@ export const EqualButton = styled.button`
 	grid-area: equ;
 	width: 100px;
 	height: 200px;
-	font-size: 2rem;
+	font-size: 3rem;
 	font-weight: 800;
 	text-align: center;
 	outline: none;
