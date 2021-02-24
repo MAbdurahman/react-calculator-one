@@ -78,6 +78,7 @@ export const OperatorButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
 export const NumberButton = styled.button`
@@ -95,9 +96,10 @@ export const NumberButton = styled.button`
 	&:hover {
 		background-color: rgba(236, 229, 229, 0.9);
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const ClearButton = styled.button`
-	grid-area: acc;
+	/* grid-area: acc; */
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -113,15 +115,15 @@ export const ClearButton = styled.button`
 		background-color: #3abca5;
 		color: rgb(255, 255, 255);
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const BackButton = styled.button`
-	grid-area: bcc;
+	/* grid-area: bcc; */
 	width: 100px;
 	height: 100px;
 	text-align: center;
 	cursor: pointer;
 	font-size: 3rem;
-
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
@@ -132,9 +134,10 @@ export const BackButton = styled.button`
 		background-color: #038069;
 		color: rgb(255, 255, 255);
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const EqualButton = styled.button`
-	grid-area: equ;
+	/* grid-area: equ; */
 	width: 100px;
 	height: 200px;
 	font-size: 3rem;
@@ -152,6 +155,7 @@ export const EqualButton = styled.button`
 		color: rgb(255, 255, 255);
 		background-color: #bd6a17;
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
 export const PMinusButton = styled.button`
@@ -173,9 +177,10 @@ export const PMinusButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const DecimalButton = styled.button`
-	grid-area: dec;
+	/* grid-area: dec; */
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -192,4 +197,5 @@ export const DecimalButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
