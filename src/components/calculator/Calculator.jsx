@@ -25,11 +25,15 @@ export default function Calculator() {
 	//**************** handleNumbers Function ****************//
 	const handleNumbers = el => {
 		if (current === 'Undefined') {
-			handleClear();
+			// setCurrent('0');
+			console.log(current);
+			setPrevious('');
+			setOperation('');
 		}
+	
 		const value = el.target.getAttribute('data');
 
-		if (value === '.' && String(current.includes('.'))) {
+		if (value === '.' && (current.includes('.'))) {
 			return;
 		}
 		// console.log(value);
@@ -37,6 +41,10 @@ export default function Calculator() {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
 			setText('CL');
+		} else if (current.includes('Undefined')){
+			value.replace('Undefined', '');
+			setCurrent(value);
+
 		} else {
 			setCurrent(current + value);
 		}
@@ -62,7 +70,7 @@ export default function Calculator() {
 	const handleClear = () => {
 		if (text.includes('AC')) {
 			setCurrent('0');
-			setPrevious('');
+			setPrevious('0');
 			setOperation('');
 		} else {
 			setCurrent('0');
@@ -126,19 +134,25 @@ export default function Calculator() {
 				return;
 		}
 		
-	
-
 		return result;
 	};
 
 	//**************** handleEqualOperation Function ****************//
 	const handleEqualOperation = () => {
 		let value = calculate();
-		if (value == undefined || value == null || 'Undefined') {
+		if (value == undefined || value == null) {
+			return;
+			// setCurrent('Undefined');
+			// setPrevious('');
+			// setOperation('');
+			// setText('AC');
+			
+		}
+		if (value === Infinity) {
 			setCurrent('Undefined');
-			setPrevious('');
+			setPrevious('Undefined');
+			// setText('AC');
 			setOperation('');
-			setText('AC');
 			return;
 		}
 
@@ -272,7 +286,7 @@ export default function Calculator() {
 					<DecimalButton
 						gridArea={'dec'}
 						data={'.'}
-						onClick={handleDecimal}
+						onClick={handleNumbers}
 					>
 						&sdot;
 					</DecimalButton>
