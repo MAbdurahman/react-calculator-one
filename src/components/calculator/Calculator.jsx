@@ -95,14 +95,42 @@ export default function Calculator() {
 	};
 
 	//**************** calculate Function ****************//
-	const calculate = () => {};
+	const calculate = () => {
+		let result;
+		let previousNumber = parseFloat(previous);
+		let currentNumber = parseFloat(current);
+
+		if (isNaN(previousNumber) || isNaN(currentNumber)) {
+			return;
+
+		}
+
+		switch (operation) {
+			case '+':
+				result = previousNumber + currentNumber;
+				break;
+			case '-':
+				result = previousNumber - currentNumber;
+				break;
+			case '*':
+				result = previousNumber * currentNumber;
+				break;
+			case '÷':
+				result = previousNumber / currentNumber;
+				break;
+
+			default:
+				return;
+		}
+
+		return result;
+	};
 
 	//**************** handleEqualOperation Function ****************//
 	const handleEqualOperation = () => {
 		let value = calculate();
 		if (value == undefined || value == null) {
 			return;
-			
 		}
 
 		setCurrent(value);
