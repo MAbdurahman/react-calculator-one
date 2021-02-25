@@ -22,8 +22,8 @@ export default function Calculator() {
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
 
-	//**************** appendValue Function ****************//
-	const appendValue = el => {
+	//**************** handleNumbers Function ****************//
+	const handleNumbers = el => {
 		const value = el.target.getAttribute('data');
 
 		if (value === '.' && current.includes('.')) {
@@ -47,8 +47,10 @@ export default function Calculator() {
 			setCurrent(String(current).slice(0, -1));
 			console.log(current.length);
 		}
-		if ((current.length === 2 && current.includes('-')) || 
-			(current.length === 1)) {
+		if (
+			(current.length === 2 && current.includes('-')) ||
+			current.length === 1
+		) {
 			setCurrent('0');
 		}
 	};
@@ -68,7 +70,7 @@ export default function Calculator() {
 	//**************** handlePlusMinus Function ****************//
 	const handlePlusMinus = () => {
 		let number = parseFloat(current);
-		
+
 		if (number !== 0) {
 			number *= -1;
 			number = number.toString();
@@ -76,59 +78,165 @@ export default function Calculator() {
 		}
 	};
 
+	//**************** handleOperators Function ****************//
+	const handleOperators = el => {
+		if (current === '' || current === '.') {
+			return;
+		}
+		if (previous !== '') {
+			let value = calculate();
+			setPrevious(value);
+		} else {
+			setPrevious(current);
+		}
+
+		setCurrent('');
+		setOperation(el.target.getAttribute('data'));
+	};
+
+	//**************** calculate Function ****************//
+	const calculate = () => {};
+
+	//**************** handleEqualOperation Function ****************//
+	const handleEqualOperation = () => {
+		let value = calculate();
+		if (value == undefined || value == null) {
+			return;
+			
+		}
+
+		setCurrent(value);
+		setPrevious('');
+		setOperation('');
+	};
+
 	return (
 		<div className='calculator'>
 			<Container>
 				<Screen>
 					<PrevScreen>
-						{previous}' '{operation}
+						{previous}
+						{operation}
 					</PrevScreen>
 					<CurrScreen>{current}</CurrScreen>
 				</Screen>
 				<ButtonContainer>
-					<OperatorButton gridArea={'add'}>&#43;</OperatorButton>
-					<OperatorButton gridArea={'sub'}>&#8722;</OperatorButton>
-					<OperatorButton gridArea={'mul'}>&#215;</OperatorButton>
-					<OperatorButton gridArea={'div'}>&#247;</OperatorButton>
-					<NumberButton gridArea={'sev'} data={'7'} onClick={appendValue}>
+					<OperatorButton
+						gridArea={'add'}
+						data={'+'}
+						onClick={handleOperators}
+					>
+						&#43;
+					</OperatorButton>
+					<OperatorButton
+						gridArea={'sub'}
+						data={'-'}
+						onClick={handleOperators}
+					>
+						&#8722;
+					</OperatorButton>
+					<OperatorButton
+						gridArea={'mul'}
+						data={'*'}
+						onClick={handleOperators}
+					>
+						&#215;
+					</OperatorButton>
+					<OperatorButton
+						gridArea={'div'}
+						data={'÷'}
+						onClick={handleOperators}
+					>
+						&#247;
+					</OperatorButton>
+					<NumberButton
+						gridArea={'sev'}
+						data={'7'}
+						onClick={handleNumbers}
+					>
 						7
 					</NumberButton>
-					<NumberButton gridArea={'eig'} data={'8'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'eig'}
+						data={'8'}
+						onClick={handleNumbers}
+					>
 						8
 					</NumberButton>
-					<NumberButton gridArea={'nin'} data={'9'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'nin'}
+						data={'9'}
+						onClick={handleNumbers}
+					>
 						9
 					</NumberButton>
 					<ClearButton gridArea={'acc'} onClick={handleClear}>
 						{text}
 					</ClearButton>
-					<NumberButton gridArea={'fou'} data={'4'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'fou'}
+						data={'4'}
+						onClick={handleNumbers}
+					>
 						4
 					</NumberButton>
-					<NumberButton gridArea={'fiv'} data={'5'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'fiv'}
+						data={'5'}
+						onClick={handleNumbers}
+					>
 						5
 					</NumberButton>
-					<NumberButton gridArea={'six'} data={'6'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'six'}
+						data={'6'}
+						onClick={handleNumbers}
+					>
 						6
 					</NumberButton>
 					<BackButton gridArea={'bcc'} onClick={handleBackspace}>
 						&#171;
 					</BackButton>
-					<NumberButton gridArea={'one'} data={'1'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'one'}
+						data={'1'}
+						onClick={handleNumbers}
+					>
 						1
 					</NumberButton>
-					<NumberButton gridArea={'two'} data={'2'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'two'}
+						data={'2'}
+						onClick={handleNumbers}
+					>
 						2
 					</NumberButton>
-					<NumberButton gridArea={'thr'} data={'3'} onClick={appendValue}>
+					<NumberButton
+						gridArea={'thr'}
+						data={'3'}
+						onClick={handleNumbers}
+					>
 						3
 					</NumberButton>
-					<EqualButton gridArea={'equ'}>&#61;</EqualButton>
-					<PMinusButton gridArea={'pmm'} onClick={handlePlusMinus}> &#177;</PMinusButton>
-					<NumberButton gridArea={'zeo'} data={'0'} onClick={appendValue}>
+					<EqualButton gridArea={'equ'} onClick={handleEqualOperation}>
+						&#61;
+					</EqualButton>
+					<PMinusButton gridArea={'pmm'} onClick={handlePlusMinus}>
+						{' '}
+						&#177;
+					</PMinusButton>
+					<NumberButton
+						gridArea={'zeo'}
+						data={'0'}
+						onClick={handleNumbers}
+					>
 						0
 					</NumberButton>
-					<DecimalButton gridArea={'dec'} data={'.'} onClick={appendValue}>
+					<DecimalButton
+						gridArea={'dec'}
+						data={'.'}
+						onClick={handleNumbers}
+					>
 						&sdot;
 					</DecimalButton>
 				</ButtonContainer>
