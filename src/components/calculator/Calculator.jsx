@@ -24,9 +24,12 @@ export default function Calculator() {
 
 	//**************** handleNumbers Function ****************//
 	const handleNumbers = el => {
+		if (current === 'Undefined') {
+			handleClear();
+		}
 		const value = el.target.getAttribute('data');
-
-		if (value === '.' && current.includes('.')) {
+		
+		if (value === '.' && String(current.includes('.'))) {
 			return;
 		}
 		// console.log(value);
@@ -77,6 +80,8 @@ export default function Calculator() {
 			setCurrent(number);
 		}
 	};
+	//**************** handleDecimal Function ****************//
+	const handleDecimal = () => {};
 
 	//**************** handleOperators Function ****************//
 	const handleOperators = el => {
@@ -102,7 +107,6 @@ export default function Calculator() {
 
 		if (isNaN(previousNumber) || isNaN(currentNumber)) {
 			return;
-
 		}
 
 		switch (operation) {
@@ -116,9 +120,13 @@ export default function Calculator() {
 				result = previousNumber * currentNumber;
 				break;
 			case '÷':
-				result = previousNumber / currentNumber;
-				break;
-
+				if (currentNumber === 0) {
+					result = 'Undefined';
+					break;
+				} else {
+					result = previousNumber / currentNumber;
+					break;
+				}
 			default:
 				return;
 		}
@@ -129,7 +137,8 @@ export default function Calculator() {
 	//**************** handleEqualOperation Function ****************//
 	const handleEqualOperation = () => {
 		let value = calculate();
-		if (value == undefined || value == null) {
+		if (value == undefined || value == null || 'Undefined') {
+			setCurrent('Undefined');
 			return;
 		}
 
