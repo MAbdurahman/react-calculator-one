@@ -28,7 +28,7 @@ export default function Calculator() {
 			handleClear();
 		}
 		const value = el.target.getAttribute('data');
-		
+
 		if (value === '.' && String(current.includes('.'))) {
 			return;
 		}
@@ -120,16 +120,13 @@ export default function Calculator() {
 				result = previousNumber * currentNumber;
 				break;
 			case '÷':
-				if (currentNumber === 0) {
-					result = 'Undefined';
-					break;
-				} else {
-					result = previousNumber / currentNumber;
-					break;
-				}
+				result = previousNumber / currentNumber;
+				break;
 			default:
 				return;
 		}
+		
+	
 
 		return result;
 	};
@@ -139,6 +136,9 @@ export default function Calculator() {
 		let value = calculate();
 		if (value == undefined || value == null || 'Undefined') {
 			setCurrent('Undefined');
+			setPrevious('');
+			setOperation('');
+			setText('AC');
 			return;
 		}
 
@@ -272,7 +272,7 @@ export default function Calculator() {
 					<DecimalButton
 						gridArea={'dec'}
 						data={'.'}
-						onClick={handleNumbers}
+						onClick={handleDecimal}
 					>
 						&sdot;
 					</DecimalButton>
