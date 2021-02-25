@@ -16,33 +16,73 @@ import {
 } from '../../styles/styled-components/Styled';
 
 export default function Calculator() {
+	//**************** State Values ****************//
 	const [current, setCurrent] = useState('0');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
 
+	//**************** appendValue Function ****************//
 	const appendValue = el => {
 		const value = el.target.getAttribute('data');
 
 		if (value === '.' && current.includes('.')) {
 			return;
 		}
-		console.log(value);
+		// console.log(value);
 		if (current.length === 1 && current.includes('0')) {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
 			setText('CL');
-			
 		} else {
-
 			setCurrent(current + value);
 		}
 	};
+
+	//**************** handleBackspace Function ****************//
+	const handleBackspace = () => {
+		if (current.includes('Undefined')) {
+			setCurrent('0');
+		} else {
+			setCurrent(String(current).slice(0, -1));
+			console.log(current.length);
+		}
+		if ((current.length === 2 && current.includes('-')) || 
+			(current.length === 1)) {
+			setCurrent('0');
+		}
+	};
+
+	//**************** handleClear Function ****************//
+	const handleClear = () => {
+		if (text.includes('AC')) {
+			setCurrent('0');
+			setPrevious('');
+			setOperation('');
+		} else {
+			setCurrent('0');
+			setText('AC');
+		}
+	};
+
+	//**************** handlePlusMinus Function ****************//
+	const handlePlusMinus = () => {
+		let number = parseFloat(current);
+		
+		if (number !== 0) {
+			number *= -1;
+			number = number.toString();
+			setCurrent(number);
+		}
+	};
+
 	return (
 		<div className='calculator'>
 			<Container>
 				<Screen>
-					<PrevScreen>10+</PrevScreen>
+					<PrevScreen>
+						{previous}' '{operation}
+					</PrevScreen>
 					<CurrScreen>{current}</CurrScreen>
 				</Screen>
 				<ButtonContainer>
@@ -59,7 +99,9 @@ export default function Calculator() {
 					<NumberButton gridArea={'nin'} data={'9'} onClick={appendValue}>
 						9
 					</NumberButton>
-					<ClearButton gridArea={'acc'}>{text}</ClearButton>
+					<ClearButton gridArea={'acc'} onClick={handleClear}>
+						{text}
+					</ClearButton>
 					<NumberButton gridArea={'fou'} data={'4'} onClick={appendValue}>
 						4
 					</NumberButton>
@@ -69,7 +111,9 @@ export default function Calculator() {
 					<NumberButton gridArea={'six'} data={'6'} onClick={appendValue}>
 						6
 					</NumberButton>
-					<BackButton gridArea={'bcc'}>&#171;</BackButton>
+					<BackButton gridArea={'bcc'} onClick={handleBackspace}>
+						&#171;
+					</BackButton>
 					<NumberButton gridArea={'one'} data={'1'} onClick={appendValue}>
 						1
 					</NumberButton>
@@ -80,7 +124,7 @@ export default function Calculator() {
 						3
 					</NumberButton>
 					<EqualButton gridArea={'equ'}>&#61;</EqualButton>
-					<PMinusButton gridArea={'pmm'}> &#177;</PMinusButton>
+					<PMinusButton gridArea={'pmm'} onClick={handlePlusMinus}> &#177;</PMinusButton>
 					<NumberButton gridArea={'zeo'} data={'0'} onClick={appendValue}>
 						0
 					</NumberButton>
