@@ -21,6 +21,10 @@ export default function Calculator() {
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
+	// const only_decimal = /^[-+]?(\.\d{5,})?$/g;
+	// const whole_integer = /^[-+]?\d+$/g;
+	// const number_four_places = /^[\d]+?(\.\d{0,4})?$/g;
+	const number_decimal_four_places = /^[- +]?[\d]+?(\.\d{0,4})?$/;
 
 	//**************** handleNumbers Function ****************//
 	const handleNumbers = el => {
@@ -30,10 +34,10 @@ export default function Calculator() {
 			setPrevious('');
 			setOperation('');
 		}
-	
+
 		const value = el.target.getAttribute('data');
 
-		if (value === '.' && (current.includes('.'))) {
+		if (value === '.' && current.includes('.')) {
 			return;
 		}
 		// console.log(value);
@@ -41,10 +45,9 @@ export default function Calculator() {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
 			setText('CL');
-		} else if (current.includes('Undefined')){
+		} else if (current.includes('Undefined')) {
 			value.replace('Undefined', '');
 			setCurrent(value);
-
 		} else {
 			setCurrent(current + value);
 		}
@@ -54,6 +57,7 @@ export default function Calculator() {
 	const handleBackspace = () => {
 		if (current.includes('Undefined')) {
 			setCurrent('0');
+			setPrevious('');
 		} else {
 			setCurrent(String(current).slice(0, -1));
 			console.log(current.length);
@@ -70,7 +74,7 @@ export default function Calculator() {
 	const handleClear = () => {
 		if (text.includes('AC')) {
 			setCurrent('0');
-			setPrevious('0');
+			setPrevious('');
 			setOperation('');
 		} else {
 			setCurrent('0');
@@ -133,20 +137,19 @@ export default function Calculator() {
 			default:
 				return;
 		}
-		
+
 		return result;
 	};
 
 	//**************** handleEqualOperation Function ****************//
 	const handleEqualOperation = () => {
 		let value = calculate();
-		if (value == undefined || value == null) {
+		if (value === undefined || value === null) {
 			return;
 			// setCurrent('Undefined');
 			// setPrevious('');
 			// setOperation('');
 			// setText('AC');
-			
 		}
 		if (value === Infinity) {
 			setCurrent('Undefined');
@@ -155,10 +158,17 @@ export default function Calculator() {
 			setOperation('');
 			return;
 		}
-
-		setCurrent(value);
-		setPrevious('');
-		setOperation('');
+		if (!number_decimal_four_places.test(value)) {
+			value = value.toFixed(4);
+			setCurrent(value);
+			setPrevious('');
+			setOperation('');
+		} else {
+			// value = value.toFixed(2);
+			setCurrent(value);
+			setPrevious('');
+			setOperation('');
+		}
 	};
 
 	return (
