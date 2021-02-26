@@ -44,7 +44,7 @@ export default function Calculator() {
 		if (current.length === 1 && current.includes('0')) {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
-			setText('CL');
+			setText('CE');
 		} else if (current.includes('Undefined')) {
 			value.replace('Undefined', '');
 			setCurrent(value);
@@ -102,7 +102,13 @@ export default function Calculator() {
 		}
 		if (previous !== '') {
 			let value = calculate();
+
+			if (!number_decimal_four_places.test(value)) {
+				value = value.toFixed(4);
+			}
+
 			setPrevious(value);
+
 		} else {
 			setPrevious(current);
 		}
@@ -179,7 +185,7 @@ export default function Calculator() {
 						{previous}
 						{operation}
 					</PrevScreen>
-					<CurrScreen>{current}</CurrScreen>
+					<CurrScreen>&nbsp;{current}</CurrScreen>
 				</Screen>
 				<ButtonContainer>
 					<OperatorButton
