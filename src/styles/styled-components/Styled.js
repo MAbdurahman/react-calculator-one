@@ -32,6 +32,7 @@ export const Screen = styled.div`
 	text-align: right;
 	word-wrap: break-word;
 	word-break: break-all;
+	/* white-space: nowrap; */
 	background-color: rgba(58, 58, 58, 1);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;

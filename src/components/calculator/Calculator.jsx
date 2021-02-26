@@ -64,8 +64,7 @@ export default function Calculator() {
 		}
 		if (
 			(current.length === 2 && current.includes('-')) ||
-			current.length === 1
-		) {
+				current.length === 1) {
 			setCurrent('0');
 		}
 	};
