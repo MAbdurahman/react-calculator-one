@@ -17,13 +17,10 @@ import {
 
 export default function Calculator() {
 	//**************** State Values ****************//
-	const [current, setCurrent] = useState('');
+	const [current, setCurrent] = useState('0');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
-	// const only_decimal = /^[-+]?(\.\d{5,})?$/g;
-	// const whole_integer = /^[-+]?\d+$/g;
-	// const number_four_places = /^[\d]+?(\.\d{0,4})?$/g;
 	const number_decimal_four_places = /^[- +]?[\d]+?(\.\d{0,4})?$/;
 
 	//**************** handleNumbers Function ****************//
@@ -60,15 +57,17 @@ export default function Calculator() {
 		console.log(current);
 		if (current === 'Undefined') {
 			handleClear();
+
 		} else {
 			setCurrent(String(current).slice(0, -1));
-			// console.log(current.length);
+		
 		}
 		if (
 			(current.length === 2 && current.includes('-')) ||
 			current.length === 1
 		) {
 			setCurrent('0');
+
 		}
 	};
 
@@ -111,35 +110,8 @@ export default function Calculator() {
 				setCurrent(number);
 			}
 		}
-
-		// let number = parseFloat(current);
-		// if (number !== 0) {
-		// 	number *= -1;
-		// 	number = number.toString();
-		// 	setCurrent(number);
-		//}
-		// let number = parseFloat(current);
-
-		// if (isNaN(number) || current === 'NaN') {
-
-		// 	// console.log('this is location!');
-		// 	setCurrent('0');
-		// 	setPrevious('0');
-		// } else {
-		// 	setCurrent('Undefined');
-		// }
-
-		// if (number !== 0 && isNaN(number)) {
-		// 	number *= -1;
-		// 	number = number.toString();
-		// 	setCurrent(number);
-		// } else {
-		// 	console.log('THIS IS WHERE1');
-		// }
 	};
-	//**************** handleDecimal Function ****************//
-	const handleDecimal = () => {};
-
+	
 	//**************** handleOperators Function ****************//
 	const handleOperators = el => {
 		if (current === '' || current === '.') {
@@ -196,10 +168,7 @@ export default function Calculator() {
 		let value = calculate();
 		if (value === undefined || value === null) {
 			return;
-			// setCurrent('Undefined');
-			// setPrevious('');
-			// setOperation('');
-			// setText('AC');
+			
 		}
 		if (value === Infinity || isNaN(value)) {
 			setCurrent('Undefined');
@@ -214,10 +183,10 @@ export default function Calculator() {
 			setPrevious('');
 			setOperation('');
 		} else {
-			// value = value.toFixed(2);
 			setCurrent(value);
 			setPrevious('');
 			setOperation('');
+
 		}
 	};
 

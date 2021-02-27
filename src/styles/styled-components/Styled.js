@@ -32,7 +32,6 @@ export const Screen = styled.div`
 	text-align: right;
 	word-wrap: break-word;
 	word-break: break-all;
-	/* white-space: nowrap; */
 	background-color: rgba(58, 58, 58, 1);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -63,6 +62,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const OperatorButton = styled.button`
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -79,10 +79,10 @@ export const OperatorButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
 export const NumberButton = styled.button`
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -97,10 +97,9 @@ export const NumberButton = styled.button`
 	&:hover {
 		background-color: rgba(236, 229, 229, 0.9);
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const ClearButton = styled.button`
-	/* grid-area: acc; */
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -116,10 +115,9 @@ export const ClearButton = styled.button`
 		background-color: #3abca5;
 		color: rgb(255, 255, 255);
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const BackButton = styled.button`
-	/* grid-area: bcc; */
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -135,10 +133,10 @@ export const BackButton = styled.button`
 		background-color: #038069;
 		color: rgb(255, 255, 255);
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
+
 export const EqualButton = styled.button`
-	/* grid-area: equ; */
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 200px;
 	font-size: 3rem;
@@ -156,11 +154,10 @@ export const EqualButton = styled.button`
 		color: rgb(255, 255, 255);
 		background-color: #bd6a17;
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 
 export const PMinusButton = styled.button`
-	grid-area: pmm;
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -178,10 +175,9 @@ export const PMinusButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
 export const DecimalButton = styled.button`
-	/* grid-area: dec; */
+	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 	width: 100px;
 	height: 100px;
 	text-align: center;
@@ -198,5 +194,4 @@ export const DecimalButton = styled.button`
 		color: #b8bbb7;
 		background-color: #5e615c;
 	}
-	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
 `;
