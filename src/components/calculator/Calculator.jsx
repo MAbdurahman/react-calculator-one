@@ -17,7 +17,7 @@ import {
 
 export default function Calculator() {
 	//**************** State Values ****************//
-	const [current, setCurrent] = useState('0');
+	const [current, setCurrent] = useState('');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
@@ -36,18 +36,20 @@ export default function Calculator() {
 		}
 
 		const value = el.target.getAttribute('data');
+		setText('CE');
 
-		if (value === '.' && current.includes('.')) {
+		if (value === '.' && String(current).includes('.')) {
 			return;
 		}
 		// console.log(value);
-		if (current.length === 1 && current.includes('0')) {
+		if (current.length === 1 && current === '0') {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
 			setText('CE');
-		} else if (current.includes('Undefined')) {
+		} else if (current === 'Undefined') {
 			value.replace('Undefined', '');
 			setCurrent(value);
+			setText('CE');
 		} else {
 			setCurrent(current + value);
 		}
@@ -55,16 +57,17 @@ export default function Calculator() {
 
 	//**************** handleBackspace Function ****************//
 	const handleBackspace = () => {
-		if (current.includes('Undefined')) {
-			setCurrent('0');
-			setPrevious('');
+		console.log(current);
+		if (current === 'Undefined') {
+			handleClear();
 		} else {
 			setCurrent(String(current).slice(0, -1));
-			console.log(current.length);
+			// console.log(current.length);
 		}
 		if (
 			(current.length === 2 && current.includes('-')) ||
-				current.length === 1) {
+			current.length === 1
+		) {
 			setCurrent('0');
 		}
 	};
@@ -75,6 +78,11 @@ export default function Calculator() {
 			setCurrent('0');
 			setPrevious('');
 			setOperation('');
+		} else if (current === 'Undefined' || String(current).includes('NaN')) {
+			setCurrent('0');
+			setPrevious('');
+			setOperation('');
+			setText('AC');
 		} else {
 			setCurrent('0');
 			setText('AC');
@@ -83,13 +91,51 @@ export default function Calculator() {
 
 	//**************** handlePlusMinus Function ****************//
 	const handlePlusMinus = () => {
-		let number = parseFloat(current);
-
-		if (number !== 0) {
-			number *= -1;
-			number = number.toString();
-			setCurrent(number);
+		console.log(current);
+		if (
+			current === 'Undefined' ||
+			previous === 'Undefined' ||
+			current === ''
+		) {
+			handleClear();
 		}
+		let number = parseFloat(current);
+		if (String(number).includes('NaN')) {
+			handleClear();
+		} else {
+			
+			console.log(number);
+			if (number !== 0) {
+				number *= -1;
+				toString(number);
+				setCurrent(number);
+			}
+		}
+
+		// let number = parseFloat(current);
+		// if (number !== 0) {
+		// 	number *= -1;
+		// 	number = number.toString();
+		// 	setCurrent(number);
+		//}
+		// let number = parseFloat(current);
+
+		// if (isNaN(number) || current === 'NaN') {
+
+		// 	// console.log('this is location!');
+		// 	setCurrent('0');
+		// 	setPrevious('0');
+		// } else {
+		// 	setCurrent('Undefined');
+		// }
+
+		// if (number !== 0 && isNaN(number)) {
+		// 	number *= -1;
+		// 	number = number.toString();
+		// 	setCurrent(number);
+		// } else {
+		// 	console.log('THIS IS WHERE1');
+		// }
 	};
 	//**************** handleDecimal Function ****************//
 	const handleDecimal = () => {};
@@ -107,7 +153,6 @@ export default function Calculator() {
 			}
 
 			setPrevious(value);
-
 		} else {
 			setPrevious(current);
 		}
@@ -156,7 +201,7 @@ export default function Calculator() {
 			// setOperation('');
 			// setText('AC');
 		}
-		if (value === Infinity) {
+		if (value === Infinity || isNaN(value)) {
 			setCurrent('Undefined');
 			setPrevious('Undefined');
 			// setText('AC');
