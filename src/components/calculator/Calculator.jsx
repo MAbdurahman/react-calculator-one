@@ -16,12 +16,15 @@ import {
 } from '../../styles/styled-components/Styled';
 
 export default function Calculator() {
+	//**************** Variables ****************//
+	const MAX_LENGTH = 9;
+	const number_decimal_four_places = /^[- +]?[\d]+?(\.\d{0,4})?$/;
+
 	//**************** State Values ****************//
 	const [current, setCurrent] = useState('0');
 	const [previous, setPrevious] = useState('');
 	const [operation, setOperation] = useState('');
 	const [text, setText] = useState('AC');
-	const number_decimal_four_places = /^[- +]?[\d]+?(\.\d{0,4})?$/;
 
 	//**************** handleNumbers Function ****************//
 	const handleNumbers = el => {
@@ -48,7 +51,13 @@ export default function Calculator() {
 			setCurrent(value);
 			setText('CE');
 		} else {
-			setCurrent(current + value);
+			if (current.length >= MAX_LENGTH) {
+				return;
+
+			} else {
+				setCurrent(current + value);
+
+			}
 		}
 	};
 
@@ -57,17 +66,14 @@ export default function Calculator() {
 		console.log(current);
 		if (current === 'Undefined') {
 			handleClear();
-
 		} else {
 			setCurrent(String(current).slice(0, -1));
-		
 		}
 		if (
 			(current.length === 2 && current.includes('-')) ||
 			current.length === 1
 		) {
 			setCurrent('0');
-
 		}
 	};
 
@@ -102,7 +108,6 @@ export default function Calculator() {
 		if (String(number).includes('NaN')) {
 			handleClear();
 		} else {
-			
 			console.log(number);
 			if (number !== 0) {
 				number *= -1;
@@ -111,7 +116,7 @@ export default function Calculator() {
 			}
 		}
 	};
-	
+
 	//**************** handleOperators Function ****************//
 	const handleOperators = el => {
 		if (current === '' || current === '.') {
@@ -168,7 +173,6 @@ export default function Calculator() {
 		let value = calculate();
 		if (value === undefined || value === null) {
 			return;
-			
 		}
 		if (value === Infinity || isNaN(value)) {
 			setCurrent('Undefined');
@@ -179,14 +183,22 @@ export default function Calculator() {
 		}
 		if (!number_decimal_four_places.test(value)) {
 			value = value.toFixed(4);
+
+			if (value.length >= MAX_LENGTH) {
+				value = value.toExponential();
+			}
 			setCurrent(value);
 			setPrevious('');
 			setOperation('');
 		} else {
+			if (String(value).length >= MAX_LENGTH) {
+				value = parseFloat(value);
+				value = value.toExponential();
+			}
+			console.log(value);
 			setCurrent(value);
 			setPrevious('');
 			setOperation('');
-
 		}
 	};
 
