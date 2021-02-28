@@ -13,6 +13,7 @@ import {
 	EqualButton,
 	PMinusButton,
 	DecimalButton,
+	CalculatorWrapper,
 } from '../../styles/styled-components/Styled';
 
 export default function Calculator() {
@@ -41,7 +42,7 @@ export default function Calculator() {
 		if (value === '.' && String(current).includes('.')) {
 			return;
 		}
-		// console.log(value);
+		
 		if (current.length === 1 && current === '0') {
 			value.replace(/^(0+)/g, '');
 			setCurrent(value);
@@ -203,7 +204,7 @@ export default function Calculator() {
 	};
 
 	return (
-		<div className='calculator'>
+		<CalculatorWrapper>
 			<Container>
 				<Screen>
 					<PrevScreen>
@@ -333,6 +334,6 @@ export default function Calculator() {
 					</DecimalButton>
 				</ButtonContainer>
 			</Container>
-		</div>
+		</CalculatorWrapper>
 	);
 }

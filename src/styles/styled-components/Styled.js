@@ -1,6 +1,29 @@
 import styled from 'styled-components';
 import { device }from './devices'
 
+
+export const CalculatorWrapper = styled.div`
+display: block;
+margin: 3em auto;
+width: 100%;
+height: 100%;
+padding-left: 15px;
+padding-right: 15px;
+
+@media ${device.tabletL} {
+	max-width: 960px;
+}
+@media ${device.tabletP} {
+
+}
+@media ${device.mobileL} {
+	max-width: 750px;
+}
+@media ${device.mobileP} {
+
+}
+`;
+
 export const Container = styled.div`
 	position: relative;
 	width: 400px;
@@ -42,12 +65,12 @@ export const Screen = styled.div`
 
 export const PrevScreen = styled.div`
 	color: rgba(255, 255, 255, 0.667);
-	font-size: 1.5rem;
+	font-size: 1.125rem;
 `;
 
 export const CurrScreen = styled.div`
 	color: rgb(255, 255, 255);
-	font-size: 2.5rem;
+	font-size: 2rem;
 `;
 
 export const ButtonContainer = styled.div`
