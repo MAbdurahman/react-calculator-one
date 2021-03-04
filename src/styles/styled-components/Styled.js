@@ -6,7 +6,6 @@ export const CalculatorWrapper = styled.div`
 display: block;
 margin: 3em auto;
 width: 100%;
-height: 100%;
 padding-left: 15px;
 padding-right: 15px;
 
@@ -26,13 +25,10 @@ padding-right: 15px;
 
 export const Container = styled.div`
 	position: relative;
-	width: 400px;
-	height: 620px;
+	width: 300px;
 	margin-left: auto;
 	margin-right: auto;
 	display: grid;
-	grid-template-columns: repeat(4, 100px);
-	grid-template-rows: minmax(120px auto) repeat(5, 100px);
 	justify-content: center;
 	align-content: center;
 	background-color: #808080;
@@ -70,12 +66,12 @@ export const PrevScreen = styled.div`
 
 export const CurrScreen = styled.div`
 	color: rgb(255, 255, 255);
-	font-size: 2rem;
+	font-size: 1.75rem;
 `;
 
 export const ButtonContainer = styled.div`
-	height: 400px;
-	margin-top: 1.3em;
+	height: 375px;
+	margin-top: 5.6em;
 	display: grid;
 	grid-template-areas:
 		'add sub mul div'
@@ -87,11 +83,11 @@ export const ButtonContainer = styled.div`
 
 export const OperatorButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.75rem;
 	font-weight: 500;
 	border: 1px outset white;
 	outline: none;
@@ -107,11 +103,11 @@ export const OperatorButton = styled.button`
 
 export const NumberButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
@@ -124,11 +120,11 @@ export const NumberButton = styled.button`
 `;
 export const ClearButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.6rem;
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
@@ -142,11 +138,11 @@ export const ClearButton = styled.button`
 `;
 export const BackButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 3rem;
+	font-size: 2.5rem;
 	border: 1px outset white;
 	outline: none;
 	color: #3a3a3a;
@@ -161,9 +157,9 @@ export const BackButton = styled.button`
 
 export const EqualButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 200px;
-	font-size: 3rem;
+	width: 75px;
+	height: 150px;
+	font-size: 2.5rem;
 	font-weight: 800;
 	text-align: center;
 	outline: none;
@@ -182,11 +178,11 @@ export const EqualButton = styled.button`
 
 export const PMinusButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.75rem;
 	font-weight: 500;
 	border: 1px outset white;
 	outline: none;
@@ -202,11 +198,11 @@ export const PMinusButton = styled.button`
 `;
 export const DecimalButton = styled.button`
 	${({ gridArea }) => gridArea && `grid-area: ${gridArea};`}
-	width: 100px;
-	height: 100px;
+	width: 75px;
+	height: 75px;
 	text-align: center;
 	cursor: pointer;
-	font-size: 3rem;
+	font-size: 2.75rem;
 	font-weight: 800;
 	border: 1px outset white;
 	outline: none;
