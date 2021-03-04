@@ -5,20 +5,27 @@ import { device }from './devices'
 export const CalculatorWrapper = styled.div`
 display: block;
 margin: 3em auto;
-width: 100%;
+max-width: 1140px;
 padding-left: 15px;
 padding-right: 15px;
+margin-left: auto;
+margin-right: auto;
 
-@media ${device.tabletL} {
+@media ${device.tabletLandscape} {
 	max-width: 960px;
 }
-@media ${device.tabletP} {
-
+@media ${device.tabletPortrait} {
+	max-width:720px;
 }
-@media ${device.mobileL} {
-	max-width: 750px;
+@media ${device.mobileLandscape} {
+	max-width: 540px;
 }
-@media ${device.mobileP} {
+@media ${device.mobilePortrait} {
+	max-width: 300px;
+	padding-left: 0;
+}
+@media ${device.extraSmallMobile} {
+	max-width: 300px;
 
 }
 `;
