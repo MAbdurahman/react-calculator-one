@@ -4,7 +4,12 @@ import { device }from './devices'
 
 export const CalculatorWrapper = styled.div`
 display: block;
-margin: 3em auto;
+/* margin: 3em auto; */
+margin-left: auto;
+margin-right: auto;
+display: flex;
+justify-content: center;
+align-items: center;
 max-width: 1140px;
 padding-left: 15px;
 padding-right: 15px;
